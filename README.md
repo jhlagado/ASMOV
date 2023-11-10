@@ -1,13 +1,13 @@
-# MINTY Language
+# ASMOV Language
 
-MINTY is a minimalist character-based interpreter but one which aims at fast performance,
+ASMOV is a minimalist character-based interpreter but one which aims at fast performance,
 readability and ease of use. It is written for the Z80 microprocessor and is 5K.
 
-Unlike other character-based interpreters, MINTY does not use obscure symbols.
+Unlike other character-based interpreters, ASMOV does not use obscure symbols.
 Instead it uses well-known conventions to do expected things. Sometimes an operation
 is made of two symbols such as <= which means "less than or equal to". Wherever possible,
-MINTY follows the conventions used by the C programming language so the meanings of
-MINTY operations should be fairly recognisable to programmers of other languages.
+ASMOV follows the conventions used by the C programming language so the meanings of
+ASMOV operations should be fairly recognisable to programmers of other languages.
 
 ## Reverse Polish Notation (RPN)
 
@@ -15,7 +15,7 @@ RPN is a [concatenative](https://concatenative.org/wiki/view/Concatenative%20lan
 way of writing expressions in which the operators come after their operands.
 This makes it very easy to evaluate expressions, since the operands are already on the stack.
 
-Here is an example of a simple MINTY program that uses RPN:
+Here is an example of a simple ASMOV program that uses RPN:
 
 ```
 10 20 + .
@@ -25,30 +25,30 @@ This program pushes the numbers `10` and `20` are operands which are followed by
 operator `+` which adds the two operands together. The result becomes operand for
 the `.` operator which prints the sum.
 
-## Numbers in MINTY
+## Numbers in ASMOV
 
-MINTY on the Z80 uses 16-bit integers to represent numbers. A valid (but not very
-interesting) MINTY program can be simply a sequence of numbers. Nothing will happen
+ASMOV on the Z80 uses 16-bit integers to represent numbers. A valid (but not very
+interesting) ASMOV program can be simply a sequence of numbers. Nothing will happen
 to them though until the program encounters an operator.
 
-There are two main types of numbers in MINTY: decimal numbers and hexadecimal numbers.
+There are two main types of numbers in ASMOV: decimal numbers and hexadecimal numbers.
 
 ### Decimal numbers
 
-Decimal numbers are represented in MINTY in the same way that they are represented
+Decimal numbers are represented in ASMOV in the same way that they are represented
 in most other programming languages. For example, the number `12345` is represented
 as `12345`. A negative number is preceded by a `-` as in `-786`.
 
 ### Hexadecimal numbers
 
-Hexadecimal numbers are represented in MINTY using the uppercase letters `A` to `F`
+Hexadecimal numbers are represented in ASMOV using the uppercase letters `A` to `F`
 to represent the digits `10` to `15`. Hexadecimal numbers are prefixed with a `$`.
 So for example, the hexadecimal number `1F3A` is represented as `$1F3A`.
-Unlike decimal numbers, hexadecimal numbers are assumed to be positive in MINTY.
+Unlike decimal numbers, hexadecimal numbers are assumed to be positive in ASMOV.
 
 ### Formatting numbers
 
-MINTY provides commands for formatting hexadecimal and decimal numbers. The print
+ASMOV provides commands for formatting hexadecimal and decimal numbers. The print
 operator `.` prints numbers in the current base. To switch the base to hexadecimal
 use the command `/hex` before using the `.` operator. To switch back to formatting
 in decimal use the command /dec.
@@ -74,7 +74,7 @@ The `.` operator prints the difference.
 5 4 / .
 ```
 
-This program divides 5 with 4 prints their quotient. MINTY for the Z80 uses
+This program divides 5 with 4 prints their quotient. ASMOV for the Z80 uses
 16-bit integers. The remainder of the last division operation can accessed using
 the `/rem` operator.
 
@@ -84,10 +84,10 @@ the `/rem` operator.
 
 ## Variables and Variable Assignment
 
-Variables are named locations in memory that can store data. MINTY has a limited
-number of global variables which have single letter names. In MINTY a variable can
+Variables are named locations in memory that can store data. ASMOV has a limited
+number of global variables which have single letter names. In ASMOV a variable can
 be referred to by a singer letter from `a` to `z` or from `A` to `Z` so there are 52
-globals in MINTY. Global variables can be used to store numbers, strings, arrays, blocks, functions etc.
+globals in ASMOV. Global variables can be used to store numbers, strings, arrays, blocks, functions etc.
 
 To assign the value `10` to the global variable `x` use the `=`.
 
@@ -125,7 +125,7 @@ Z .
 
 ## Arithmetic assignment Operators
 
-MINTY has a set of arithmetic assignment operators that can be used to combine an
+ASMOV has a set of arithmetic assignment operators that can be used to combine an
 assignment with an arithmetic operation. These operators are:
 
 - `+=` adds the left operand to the right operand and assigns the result to the right operand.
@@ -147,7 +147,7 @@ is equivalent to the following code:
 5 x + x =
 ```
 
-Here are some more examples of MINTY's assignment operators:
+Here are some more examples of ASMOV's assignment operators:
 
 ```
 10 x =
@@ -162,10 +162,10 @@ Here are some more examples of MINTY's assignment operators:
 
 ## Arrays
 
-MINTY arrays are a type of data structure that can be used to store a collection of elements. Arrays are indexed, which means that each element in the array has a unique number associated with it. This number is called the index of the element.
-In MINTY, array indexes start at 0
+ASMOV arrays are a type of data structure that can be used to store a collection of elements. Arrays are indexed, which means that each element in the array has a unique number associated with it. This number is called the index of the element.
+In ASMOV, array indexes start at 0
 
-To create a MINTY array, you can use the following syntax:
+To create a ASMOV array, you can use the following syntax:
 
 _[ element1 element2 ... ]_
 
@@ -208,19 +208,19 @@ prints `[ 1 2 3 ]` to the output
 
 ## Data width
 
-MINTY can work in two modes: _byte mode_ and _word mode_. In byte mode, all values are assumed to be 8 bits, while in
+ASMOV can work in two modes: _byte mode_ and _word mode_. In byte mode, all values are assumed to be 8 bits, while in
 word mode, all values are assumed to be 16 bits. The user can change the mode to byte mode by using the command /byt.
 The user can change to word mode with the command /wrd.
 
-The default mode for MINTY is word mode. This means that if the user does not specify a mode, all values will be assumed to be
+The default mode for ASMOV is word mode. This means that if the user does not specify a mode, all values will be assumed to be
 16 bits.
 
-When MINTY is in word mode, the following rules apply:
+When ASMOV is in word mode, the following rules apply:
 
 - All values are stored as 16-bit integers.
 - All operations are performed on 16-bit integers.
 
-When MINTY is in byte mode, the following rules apply:
+When ASMOV is in byte mode, the following rules apply:
 
 - All values are stored as 8-bit integers.
 - All operations are performed on 8-bit integers.
@@ -259,7 +259,7 @@ This would print `3` words (6 bytes)
 
 ## Characters
 
-Printable ASCII characters can be defined literally in MINTY by using the `_` prefix
+Printable ASCII characters can be defined literally in ASMOV by using the `_` prefix
 
 For example to define a byte mode array of characters, you could do this
 
@@ -277,7 +277,7 @@ prints `h`
 
 ## Strings
 
-MINTY allows null-terminated strings to be defined by surrounding the string with `'` characters.
+ASMOV allows null-terminated strings to be defined by surrounding the string with `'` characters.
 
 ```
 'hello there!' S =
@@ -309,14 +309,14 @@ prints `0` (for false)
 
 ### Printing values
 
-MINTY has a number of ways of printing to the output.
+ASMOV has a number of ways of printing to the output.
 
 `<value> .` prints a value as a number. This command is affected by /hex /dc /byt /wrd  
 `<value> .c` prints a value as an ASCII character
 `<value> .s` prints a value as a pointer to a null terminated string
 `<value> .a` prints a value as a pointer to an array. This command is affected by /hex /dc /byt /wrd
 
-Additionally MINTY allows the user to easily print literal text by using \` quotes.
+Additionally ASMOV allows the user to easily print literal text by using \` quotes.
 
 For example
 
@@ -330,7 +330,7 @@ prints `The value of x is 100`
 ## String builder
 
 Anything that can be written to the screen can be captured and turned into a string
-by using MINTY's string builder.
+by using ASMOV's string builder.
 
 ```
 234 r =
@@ -345,7 +345,7 @@ It then prints the string in T
 
 ## Logical operators
 
-MINTY uses numbers to define boolean values.
+ASMOV uses numbers to define boolean values.
 
 - false is represent by the number `0`
 - true is any non-zero value, however the most useful representation is `-1` ($FFFF)
@@ -364,7 +364,7 @@ prints `0`
 
 prints `-1`
 
-MINTY has a set of bitwise logical operators that can be used to manipulate bits. These operators are:
+ASMOV has a set of bitwise logical operators that can be used to manipulate bits. These operators are:
 
 `&` performs a bitwise AND operation on the two operands.
 `|` performs a bitwise OR operation on the two operands.
@@ -380,7 +380,7 @@ The bitwise logical operators can be used to perform a variety of operations on 
 - Flipping a bit.
 - Counting the number of set bits in a number.
 
-Here is an example of how to use the bitwise logical operators in MINTY:
+Here is an example of how to use the bitwise logical operators in ASMOV:
 
 Check if the first bit of the number 10 is set
 
@@ -408,7 +408,7 @@ prints $000B
 
 ## Code blocks
 
-You can put any code inside { } block which tells MINTY to "execute this later".
+You can put any code inside { } block which tells ASMOV to "execute this later".
 
 Code blocks can be stored for later or immediately executed.
 
@@ -444,9 +444,9 @@ hello 4 5 6
 
 ## Conditional code
 
-Code blocks are useful when it comes to conditional code in MINTY.
+Code blocks are useful when it comes to conditional code in ASMOV.
 
-The syntax for a MINTY IF-THEN-ELSE or "if...else" operator in MINTY is:
+The syntax for a ASMOV IF-THEN-ELSE or "if...else" operator in ASMOV is:
 
 ```
 condition code-block-then code-block-else ?
@@ -455,7 +455,7 @@ condition code-block-then code-block-else ?
 If the condition is true, then code-block-then is evaluated and its value is returned.
 Otherwise, code-block-else is evaluated and its value is returned.
 
-Here is an example of a "if...else" operator in MINTY:
+Here is an example of a "if...else" operator in ASMOV:
 
 ```
 10 x =
@@ -468,7 +468,7 @@ z .s
 
 In this example, the variable x is assigned the value 10 and the variable y is assigned the value 20. The "if...else" operator then checks to see if x is greater than y. If it is, then the string "x is greater than y" is returned. Otherwise, the string "y is greater than x" is returned. The value of the "if...else" operator is then assigned to the variable z. Finally, the value of z is printed to the console.
 
-Here is another example of the "if...else" operator in MINTY. This time, instead of creating a string just to print it, the following
+Here is another example of the "if...else" operator in ASMOV. This time, instead of creating a string just to print it, the following
 code conditionally prints text straight to the console.
 
 ```
@@ -481,7 +481,7 @@ In this example, the variable a is assigned the value 18. The "if...else" operat
 then checks to see if age is greater than or equal to the voting age of 18. If it is,
 then the text "can" is printed to the console. Otherwise, the string "cannot" is printed to the console.
 
-MINTY can also use the "select" operator `/sel` to choose between multiple cases.
+ASMOV can also use the "select" operator `/sel` to choose between multiple cases.
 
 ```
 key array-of-pairs /sel
@@ -511,15 +511,15 @@ In this example with select "B" which returns the number 2.
 _B [_A {1} _B {2} _C {3}] /sel
 ```
 
-## Functions in MINTY
+## Functions in ASMOV
 
-In MINTY functions are anonymous and can be called directly or assigned to variables.
-Functions are first-class citizens. They are a powerful feature of MINTY that can be used to
+In ASMOV functions are anonymous and can be called directly or assigned to variables.
+Functions are first-class citizens. They are a powerful feature of ASMOV that can be used to
 simplify code and make it more concise.
 
 ### Basic Function Syntax
 
-In MINTY, functions are denoted by the `\` symbol followed by one or more arguments
+In ASMOV, functions are denoted by the `\` symbol followed by one or more arguments
 (single lowercase letters) and a `{` symbol to indicate the beginning of the
 function expression. The body of the function is written using Reverse Polish Notation (RPN),
 where `%` is used to reference the function's arguments.
@@ -562,8 +562,8 @@ the result which is then printed.
 
 ### Assigning Functions to Variables
 
-In MINTY, you can assign functions to variables just like any other value.
-Variables in MINTY are limited to a single uppercase or lowercase letter. To
+In ASMOV, you can assign functions to variables just like any other value.
+Variables in ASMOV are limited to a single uppercase or lowercase letter. To
 assign a function to a variable, use the `=` operator.
 
 Let's see some examples:
@@ -607,7 +607,7 @@ represents the function that takes two arguments, adds them, and prints the resu
 
 ### Using Functions
 
-Once you've assigned functions to variables, you can use them in your MINTY code.
+Once you've assigned functions to variables, you can use them in your ASMOV code.
 To execute a function and pass arguments to it, use the `^` operator. The function's
 body will be executed, and the result, if any, will be printed.
 
@@ -624,7 +624,7 @@ arguments `3` and `7`, which results in `10` being printed (the sum of the two a
 
 ### Higher-Order Functions
 
-MINTY allows you to create higher-order functions that take other functions (functions)
+ASMOV allows you to create higher-order functions that take other functions (functions)
 as arguments or return them as results. This enables powerful and flexible programming.
 
 For example, consider the following function:
@@ -638,7 +638,7 @@ the function `a` to the argument `b` using the `^` operator.
 
 ### Lexical Scoping
 
-In MINTY, variables have lexical scoping, meaning they are only accessible within
+In ASMOV, variables have lexical scoping, meaning they are only accessible within
 the scope they are defined in. If a variable is defined inside a function, it is
 accessible only within that function's body.
 
@@ -704,7 +704,7 @@ Here are some additional things to keep in mind about local variables in functio
 
 ## Loops
 
-A loop in MINTY is a represented by a pair of parentheses `(` and `)` which
+A loop in ASMOV is a represented by a pair of parentheses `(` and `)` which
 surround the code to be repeated.
 
 ```
@@ -720,8 +720,8 @@ code block or a function.
 ```
 
 The above code prints "hello" to the terminal over and over forever. By default
-loops in MINTY are endless loops which can
-only be stopped by resetting the Z80 CPU (this will cause a warm reboot in MINTY).
+loops in ASMOV are endless loops which can
+only be stopped by resetting the Z80 CPU (this will cause a warm reboot in ASMOV).
 
 ```
 ( `hello` )^
@@ -904,4 +904,3 @@ _       literal character               -- char
 /fra    free memory array               * --
 
 ```
-

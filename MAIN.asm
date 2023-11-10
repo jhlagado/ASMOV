@@ -1,6 +1,6 @@
 ; *************************************************************************
 ;
-;  MINTY programming language for the Z80 
+;  ASMOV programming language for the Z80 
 ;
 ;  by John Hardy 2023
 ;
@@ -27,7 +27,7 @@ CTRL_S      equ     19
 ESC         equ     27          
 
 ; macros for inlining a onty function in assembly
-; follow immediately with a null terminated block of MINTY code
+; follow immediately with a null terminated block of ASMOV code
 .macro FUNC,name,numLocals,argsStr
 name:
     call go
@@ -45,7 +45,7 @@ name%%M:
 perform%%M:
 .endm
 
-.org ROMSTART + $180		    ; 0+180 put MINTY code from here	
+.org ROMSTART + $180		    ; 0+180 put ASMOV code from here	
 
 ;********************** PAGE 1 BEGIN *********************************************
 
@@ -170,7 +170,7 @@ isysVars:
 ; **********************************************************************
 
 titleStr:
-    .cstr ESC,"[2JMINTY V0.1\r\n",0,0,0
+    .cstr ESC,"[2JASMOV V0.1\r\n",0,0,0
 
 ;********************** PAGE 2 BEGIN ***********************************
 
@@ -2273,7 +2273,7 @@ stringLength3:
     ret
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; MINTY interpreter
+; ASMOV interpreter
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 init:
@@ -2324,7 +2324,7 @@ coldStart:
     call coldBoot0
     jp start1
 start:
-    ld sp,STACK		            ; start MINTY
+    ld sp,STACK		            ; start ASMOV
     call init		            ; setups
 start1:
     ld hl,titleBuf

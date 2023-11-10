@@ -523,12 +523,12 @@
 00C3                             ; 
 00C3                             ; 
 00C3                             ; 
-00C3   31 00 21               LD   sp,STACK   ; start MINTY
+00C3   31 00 21               LD   sp,STACK   ; start ASMOV
 00C6   C3 45 0E               JP   start   
 00C9                             ; 
 00C9                             ; *************************************************************************
 00C9                             ; 
-00C9                             ;  MINTY programming language for the Z80
+00C9                             ;  ASMOV programming language for the Z80
 00C9                             ; 
 00C9                             ;  by John Hardy 2023
 00C9                             ; 
@@ -553,7 +553,7 @@
 00C9                CTRL_S:   EQU   19   
 00C9                ESC:      EQU   27   
 00C9                             ; macros for inlining a onty function in assembly
-00C9                             ; follow immediately with a null terminated block of MINTY code
+00C9                             ; follow immediately with a null terminated block of ASMOV code
 00C9                .macro FUNC,name,numLocals,argsStr
 00C9                             ; 
 00C9                name:
@@ -573,7 +573,7 @@
 00C9                perform%%M:
 00C9                .endm
 00C9                 
-0180                          .ORG   ROMSTART + $180   ; 0+180 put MINTY code from here	
+0180                          .ORG   ROMSTART + $180   ; 0+180 put ASMOV code from here	
 0180                             ;********************** PAGE 1 BEGIN *********************************************
 0180                OPCODES:      
 0180   21                     DB   lsb(bang_)   ; !     1
@@ -692,7 +692,7 @@
 01F0                             ; title string (also used by warm boot)
 01F0                             ; **********************************************************************
 01F0                TITLESTR:      
-01F0   1B 5B 32 4A 4D 49 4E 54 59 20 56 30 2E 31 0D 0A 00 00 00 00 .CSTR   ESC,"[2JMINTY V0.1\r\n",0,0,0   
+01F0   1B 5B 32 4A 4D 49 4E 54 59 20 56 30 2E 31 0D 0A 00 00 00 00 .CSTR   ESC,"[2JASMOV V0.1\r\n",0,0,0   
 0204                             ;********************** PAGE 2 BEGIN ***********************************
 0204                COLON_:      
 0204                HASH_:       
@@ -2658,7 +2658,7 @@
 0DF0                STRINGLENGTH3:      
 0DF0   C9                     RET      
 0DF1                             ; 
-0DF1                             ; MINTY interpreter
+0DF1                             ; ASMOV interpreter
 0DF1                             ; 
 0DF1                INIT:        
 0DF1   21 F0 01               LD   hl,titleStr   
@@ -2702,7 +2702,7 @@
 0E3F   CD 14 0E               CALL   coldBoot0   
 0E42   C3 4B 0E               JP   start1   
 0E45                START:       
-0E45   31 00 21               LD   sp,STACK   ; start MINTY
+0E45   31 00 21               LD   sp,STACK   ; start ASMOV
 0E48   CD F1 0D               CALL   init   ; setups
 0E4B                START1:      
 0E4B   21 12 26               LD   hl,titleBuf   
