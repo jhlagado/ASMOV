@@ -1,0 +1,168 @@
+.engine mycomputer
+
+.include "constants.asm"
+.include "test.fast.mac.asm"
+
+.include "IOSerial.asm"
+
+    jp testsStart
+
+.include "MAIN.asm"
+.include "ansi.asm"
+
+.align $100
+testsStart:
+
+    test "10 /hex .", 0
+
+    test "7 3 / /frac", 10
+    call printStr
+    .cstr "Done!"
+    HALT
+
+    test "/f", false
+    test "/t", true
+    test "1", 1
+    test "2", 2
+    test "1", 1
+    test "0", 0
+    test "10", 10
+    test "123", 123
+    test "-1",-1
+    test "-1 /abs",1
+    test "_a", $61
+    test "__", $5F
+    test "$10", $10
+    test "$FF", $FF
+    test "-1 2 +",1
+    test "-1 1 +",0
+    test "1 2 +", 3
+    test "4 1 2 +", 3
+    test "123 456 +", 123+456
+    test "64 128 +", 64+128
+    test "1 2 +", 3
+    test "1a= a++ a",2
+    test "-1 -1 -",0
+    test "5 3 -", 2
+    test "2 1 -",1
+    test "3a= a-- a",2
+    test "3 5 &", 1
+    test "3 5 |", 7
+    test "3 5 /xor", 6
+    test "3a= 5 a/xor a= a",6
+    test "0 !", true
+    test "2 !", false
+    test "0 !!", false
+    test "2 !!", true
+    test "2 3 *", 6
+    test "1 2 3 + *", 5
+    test "7 3 /", 2
+    test "100a= 1a+= a", 101
+    test "100a= 1a-= a", 99
+    test "100a= 2 a*= a", 200
+    test "100a= 2 a/= a", 50
+    test "2a= 3b= a b+= b", 5
+    test "2a= 3b= a b-= b", 1
+    test "2a= 3b= a b*= b", 6
+    test "2a= 6b= a b/= b", 3
+    test "$55a= $AAa&= a",0
+    test "$55a= $AAa|= a",$FF
+    test "$A5a= $AAa /xor= a",$0F
+    test "$00AA~",$FF55
+    test "$AAAAa= a~= a",$5555
+    test "3x= 1 x <<= x", 6
+    test "10x= 1 x >>= x", 5
+    test "7 3 / /remain", 1
+    test "7 3 /", 2
+    test "2 3 ==", FALSE
+    test "3 3 ==", TRUE
+    test "1 2 <", TRUE
+    test "2 1 <", FALSE
+    test "2 3 <", TRUE
+    test "3 3 <", FALSE
+    test "1 2 >", FALSE
+    test "2 1 >", TRUE
+    test "3 3 >", FALSE
+    test "4 3 >", TRUE
+    test "2 2 <=", TRUE
+    test "2 2 >=", TRUE
+    ; test "3 1 <<", 6
+    ; test "10 1 >>", 5
+    ; test "1 x = x", 1
+    ; test "1{}^", 1
+    ; test "{1}^", 1
+    ; test "{{1}^}^", 1
+    ; test "{{{1}^}^}^", 1
+    ; test "1 /f{10}{20} ? +", 21
+    ; test "1 /t{10}{20} ? +", 11
+    ; test "\\{2}^", 2
+    ; test "\\a{2}^", 2
+    ; test "5 \\a{%a}^", 5
+    ; test "5 \\a:b{%a}^", 5
+    ; test "\\a{{2}^}^", 2
+    ; test "1 5 \\a{{%a}^}^", 5
+    ; test "1 5 \\ab{{%a}^}^", 1
+    ; test "1 5 \\a{{%a 2 +}^}^", 7
+    ; test "1 5 \\ab{{%a %b +}^}^", 6
+    ; test "\\a{2} x= 1 x^", 2
+    ; test "\\a{%a} x= 0 1 x^", 1
+    ; test "\\ab{%b} x= 1 2 x^", 2
+    ; test "\\a:b{%a} x= 1 2 x^", 2
+    ; test "\\ab{%b} x= 1 2 x^", 2
+    ; test "\\ab{%b %a} x= 10 15 x^ -", 5
+    ; test "\\a:b{2} x= 1 x^", 2
+    ; test "\\:b{100 %b = %b} x= x^", 100
+    ; test "\\a:b{1 %b = %b} x= 2 x^", 1
+    ; test "\\a:b{%a %b = %b} x= 2 x^", 2
+    ; test "1 10 20 \\ab{/t {%a}{%b} ?}^ +", 11
+    ; test "1 10 20 \\ab{/f {%a}{%b} ?}^ +", 21
+    ; test "[10 20 30] 1;", 20
+    ; test "[10 20 30 40] /aln", 4
+    ; test "/byt [1 2 3] 1;", 2
+    ; test "/byt [_A _B _C] 1;", 66
+    ; test "[{10}{20}{30}] 0;^ ", 10
+    ; test "10 20 \\ab{[{%a}{%b}] 0;^}^", 10
+    ; test "0 10 20 \\iab{[{%a}{%b}] %i;^}^", 10
+    ; test "1 10 20 \\iab{[{%a}{%b}] %i;^}^", 20
+    ; test "3i= ( i i-- i/whi )^ + +", 6
+    ; test "3i= [ ( i i-- i/whi )^ ] 1;", 2
+    ; test "0 j= 4 i= ( i j + j= i i-- i/whi )^ j ", 10
+    ; test "0j= 0i= ( i j+= i++ i 5< /whi )^ j ", 10
+    ; test "0t= 3i= (4j= (t++ j-- j/whi)^ i-- i/whi)^ t", 12
+    ; test "3 \\a:bc{%a %c = ( %c %c -- %c /whi )^ + +}^", 6
+    ; test "/t \\f{1 %f/whi 2 +}^",3
+    ; test "/f \\f{1 %f/whi 2 +}^",1
+    ; test "_A 1 - /adr", NUL
+    ; test "_Z 1 + /adr", NUL
+    ; test "_a 1 - /adr", NUL
+    ; test "_z 1 + /adr", NUL
+    ; test "_z /adr", VARS + (("z"-"a")+("Z"-"A")+1)*2
+    ; test "_a /adr", VARS + ("Z"-"A"+1)*2
+    ; test "_Z /adr", VARS + ("Z"-"A")*2
+    ; test "_A /adr", VARS
+    ; test "\\a{%a} F=1F^", 1
+    ; test "1 \\b{\\a{%a}}^F= 3F^",3
+    ; test "1 \\b{\\a{%a%b-}}^F= 3F^",2
+    ; test "1 \\b{\\a:c{%a%b-%c= %c--%c}}^F= 3F^",1
+    ; test "1 \\b:c{\\a{%a%b-%c= %c--%c}}^F= 3F^",1
+    ; test "1 \\b:c{\\a:d{%a%b-%c= %c--%c %d= %d++%d}}^F= 3F^",2
+    ; test "'hello'/sln",5
+    ; test "'hello' 'hell' /scp", false
+    ; test "'hello' 'hello' /scp", true
+    ; test "/sbb `=` 1. 2. 3. `=` /sbe '=1 2 3 =' /scp", TRUE
+    ; test "[1 2 3]** + +", 6
+    ; test "/byt[_a [_b _c]** _d]2;", $63
+    ; test "_B [_A {1} _B {2}] /sel", 2
+    ; test "1 2 /max", 2
+    ; test "2 1 /max", 2
+    ; test "1 2 /min", 1
+    ; test "2 1 /min", 1
+
+   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+    call printStr
+    .cstr "Done!"
+    HALT
+    
+.include "test.fast.util.asm"
+.include "ram.asm"
