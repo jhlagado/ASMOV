@@ -692,7 +692,7 @@
 01F0                             ; title string (also used by warm boot)
 01F0                             ; **********************************************************************
 01F0                TITLESTR:      
-01F0   1B 5B 32 4A 4D 49 4E 54 59 20 56 30 2E 31 0D 0A 00 00 00 00 .CSTR   ESC,"[2JASMOV V0.1\r\n",0,0,0   
+01F0   1B 5B 32 4A 41 53 4D 4F 56 20 56 30 2E 31 0D 0A 00 00 00 00 .CSTR   ESC,"[2JASMOV V0.1\r\n",0,0,0   
 0204                             ;********************** PAGE 2 BEGIN ***********************************
 0204                COLON_:      
 0204                HASH_:       
@@ -2899,11 +2899,6 @@
 0F92   08                     EX   af,af'   ; restore
 0F93   C3 85 00               JP   putChar   
 0F96                             ; 
-0F96                F1:          
-0F96                F2:          
-0F96                F3:          
-0F96                F4:          
-0F96                             ; 
 2000                          .ORG   RAMSTART   
 2000                DSTACK_SIZE:   EQU   $100   ; Data stack size
 2000                RSTACK_SIZE:   EQU   $100   ; Return stack size
@@ -2990,7 +2985,7 @@ ROMSTART:           0000 DEFINED AT LINE 23 IN constants.asm
                     > USED AT LINE 195 IN IOSerial.asm
                     > USED AT LINE 48 IN MAIN.asm
 RAMSTART:           2000 DEFINED AT LINE 24 IN constants.asm
-                    > USED AT LINE 17
+                    > USED AT LINE 12
 ROMSIZE:            2000 DEFINED AT LINE 25 IN constants.asm
 RAMSIZE:            2000 DEFINED AT LINE 26 IN constants.asm
 CONTROL:            0080 DEFINED AT LINE 22 IN IOSerial.asm
@@ -3801,10 +3796,6 @@ ANSIMOVE:           0F69 DEFINED AT LINE 45 IN ansi.asm
 ANSITEXTSTYLE:      0F79 DEFINED AT LINE 57 IN ansi.asm
 ANSICURSORSHOW:     0F88 DEFINED AT LINE 67 IN ansi.asm
                     > USED AT LINE 850 IN MAIN.asm
-F1:                 0F96 DEFINED AT LINE 12
-F2:                 0F96 DEFINED AT LINE 13
-F3:                 0F96 DEFINED AT LINE 14
-F4:                 0F96 DEFINED AT LINE 15
 DSTACK_SIZE:        0100 DEFINED AT LINE 1 IN ram.asm
                     > USED AT LINE 8 IN ram.asm
 RSTACK_SIZE:        0100 DEFINED AT LINE 2 IN ram.asm

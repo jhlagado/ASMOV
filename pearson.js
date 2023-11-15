@@ -145,13 +145,26 @@ console.log('const pearson = ', JSON.stringify(pearsonTable));
 console.log('const opcodes = [', opcodes.map(item => item === null ? 'null' : `_${item}`).join(','), ']');
 console.log('const registers = [', registers.map(item => item === null ? 'null' : `_${item}`).join(','), ']');
 console.log('const conditions = [', conditions.map(item => item === null ? 'null' : `_${item}`).join(','), ']');
+
 // const reverseTable = {};
 // Object.keys(opcodes).forEach((key) => { reverseTable[opcodes[key]] = Number(key) });
 // Object.keys(registers).forEach((key) => { reverseTable[registers[key]] = Number(key) });
 // Object.keys(conditions).forEach((key) => { reverseTable[conditions[key]] = Number(key) });
 // console.log('const reverse = ', JSON.stringify(reverseTable));
-// console.log('-----------------------------------------------------------------------');
-// console.log('pearson: db ' + pearsonTable.join(','));
 // Object.keys(opcodes).forEach((key) => { console.log(`${opcodes[key]} .equ ${key}`) });
 // Object.keys(registers).forEach((key) => { console.log(`${registers[key]} .equ ${key}`) });
 // Object.keys(conditions).forEach((key) => { console.log(`${conditions[key]} .equ ${key}`) });
+console.log('-----------------------------------------------------------------------');
+console.log('pearson:');
+let s = ''
+pearsonTable.forEach((item, index) => {
+    s += ((index % 32 === 0 ? '\r\n\tdb ' : ',') + item)
+});
+console.log(s)
+
+console.log('opcodes:');
+s = ''
+opcodes.forEach((item, index) => {
+    s += ((index % 32 === 0 ? '\r\n\tdb ' : ',') + (item === null ? '0' : `${item}_`))
+});
+console.log(s)
