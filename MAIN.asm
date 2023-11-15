@@ -48,101 +48,6 @@ perform%%M:
 
 ;********************** PAGE 1 BEGIN *********************************************
 
-opcodes:                         
-    DB lsb(bang_)               ; !     1
-    DB lsb(dquote_)             ; "     2
-    DB lsb(hash_)               ; #     1
-    DB lsb(dollar_)             ; $     1
-    DB lsb(percent_)            ; %     1
-    DB lsb(amper_)              ; &     1
-    DB lsb(quote_)              ; '     2
-    DB lsb(lparen_)             ; (     1
-    DB lsb(rparen_)             ; )     1
-    DB lsb(star_)               ; *     1
-    DB lsb(plus_)               ; +     1
-    DB lsb(comma_)              ; ,     2
-    DB lsb(minus_)              ; -     1
-    DB lsb(dot_)                ; .     2
-    DB lsb(slash_)              ; /	    1
-    DB lsb(num_)                ; 0     1
-    DB lsb(num_)                ; 1     
-    DB lsb(num_)                ; 2     
-    DB lsb(num_)                ; 3     
-    DB lsb(num_)                ; 4     
-    DB lsb(num_)                ; 5     
-    DB lsb(num_)                ; 6     
-    DB lsb(num_)                ; 7     
-    DB lsb(num_)                ; 8     
-    DB lsb(num_)                ; 9     
-    DB lsb(colon_)              ; :     2
-    DB lsb(semicolon_)          ; ;     2
-    DB lsb(lt_)                 ; <     1
-    DB lsb(eq_)                 ; =     1
-    DB lsb(gt_)                 ; >     1 
-    DB lsb(question_)           ; ?     1  
-    DB lsb(at_)                 ; @     2
-    DB lsb(upcase_)             ; A     1
-    DB lsb(upcase_)             ; B     
-    DB lsb(upcase_)             ; C     
-    DB lsb(upcase_)             ; D     
-    DB lsb(upcase_)             ; E     
-    DB lsb(upcase_)             ; F     
-    DB lsb(upcase_)             ; G     
-    DB lsb(upcase_)             ; h     
-    DB lsb(upcase_)             ; I     
-    DB lsb(upcase_)             ; J     
-    DB lsb(upcase_)             ; K     
-    DB lsb(upcase_)             ; L     
-    DB lsb(upcase_)             ; M     
-    DB lsb(upcase_)             ; N     
-    DB lsb(upcase_)             ; O     
-    DB lsb(upcase_)             ; p     
-    DB lsb(upcase_)             ; Q     
-    DB lsb(upcase_)             ; R     
-    DB lsb(upcase_)             ; S     
-    DB lsb(upcase_)             ; T     
-    DB lsb(upcase_)             ; U     
-    DB lsb(upcase_)             ; V     
-    DB lsb(upcase_)             ; W     
-    DB lsb(upcase_)             ; X     
-    DB lsb(upcase_)             ; Y     
-    DB lsb(upcase_)             ; Z     
-    DB lsb(lbrack_)             ; [     2
-    DB lsb(backslash_)          ; \     2
-    DB lsb(rbrack_)             ; ]     2
-    DB lsb(caret_)              ; ^     1
-    DB lsb(underscore_)         ; _     2
-    DB lsb(grave_)              ; `     2   	    
-    DB lsb(lowcase_)            ; a     1
-    DB lsb(lowcase_)            ; b  
-    DB lsb(lowcase_)            ; c  
-    DB lsb(lowcase_)            ; d  
-    DB lsb(lowcase_)            ; e  
-    DB lsb(lowcase_)            ; f  
-    DB lsb(lowcase_)            ; g  
-    DB lsb(lowcase_)            ; h  
-    DB lsb(lowcase_)            ; i  
-    DB lsb(lowcase_)            ; j  
-    DB lsb(lowcase_)            ; k  
-    DB lsb(lowcase_)            ; l  
-    DB lsb(lowcase_)            ; m  
-    DB lsb(lowcase_)            ; n  
-    DB lsb(lowcase_)            ; o  
-    DB lsb(lowcase_)            ; p  
-    DB lsb(lowcase_)            ; q  
-    DB lsb(lowcase_)            ; r  
-    DB lsb(lowcase_)            ; s  
-    DB lsb(lowcase_)            ; t  
-    DB lsb(lowcase_)            ; u  
-    DB lsb(lowcase_)            ; v  
-    DB lsb(lowcase_)            ; w  
-    DB lsb(lowcase_)            ; x  
-    DB lsb(lowcase_)            ; y  
-    DB lsb(lowcase_)            ; z     
-    DB lsb(lbrace_)             ; {     1
-    DB lsb(pipe_)               ; |     1
-    DB lsb(rbrace_)             ; }     1
-    DB lsb(tilde_)              ; ~     1   
 
 ;********************** PAGE 1 END *********************************************
 
@@ -176,42 +81,98 @@ titleStr:
 
 pearson:
 
-        db 57,43,53,98,253,239,62,82,89,73,31,236,237,55,221,75
-        db 23,199,95,93,9,33,234,192,22,65,97,27,26,91,193,15
-        db 217,87,135,220,115,107,114,0,1,40,71,39,24,29,134,51
-        db 179,238,208,160,86,148,85,42,35,104,150,143,21,174,11,196
-        db 90,170,139,198,243,106,112,12,252,92,250,84,153,197,161,116
-        db 226,156,149,7,133,96,45,244,191,17,200,78,2,81,212,105
-        db 230,6,142,248,44,47,64,225,100,169,136,10,132,175,30,249
-        db 25,140,79,36,251,233,209,20,138,46,59,165,19,32,18,49
-        db 37,131,50,242,41,3,48,213,245,130,28,54,177,34,5,14
-        db 58,137,61,214,188,8,235,16,103,56,154,151,122,255,152,60
-        db 52,190,162,69,4,83,38,247,159,186,172,72,194,80,70,88
-        db 223,13,113,163,176,164,101,158,67,127,77,108,227,240,187,146
-        db 229,109,94,125,68,211,141,241,144,123,110,224,254,232,246,181
-        db 157,66,166,119,74,111,201,99,117,203,118,76,126,124,102,178
-        db 63,120,231,206,228,210,216,202,167,147,207,168,145,129,195,219
-        db 185,171,204,182,155,215,222,184,205,173,180,183,189,128,218,121
+    db 206,0,115,22,1,64,111,47,87,78,65,13,45,46,21,2,100,126,11,83,32,4,114,71,57,8,38,51,56,61,84,27
+    db 30,113,26,122,72,74,50,24,49,93,73,33,43,228,212,215,102,76,189,178,95,39,66,239,182,221,12,107,172,103,245,195
+    db 190,62,109,180,36,121,184,88,70,157,14,10,68,163,175,198,229,194,18,92,133,168,165,59,144,127,235,25,141,85,197,242
+    db 136,250,67,41,29,82,177,223,7,9,211,151,17,91,34,123,90,31,69,220,201,60,132,44,219,254,213,3,181,203,234,15
+    db 80,230,52,108,240,118,98,208,124,216,6,97,53,222,16,101,28,105,232,116,131,77,54,58,233,75,20,104,35,207,96,188
+    db 63,200,48,191,152,86,139,89,140,247,204,40,79,125,23,255,19,106,199,5,81,55,112,119,187,117,99,110,167,37,193,42
+    db 148,120,166,94,246,253,202,142,249,159,128,209,143,214,196,192,251,129,218,205,162,150,161,210,237,130,236,244,248,135,138,224
+    db 252,238,231,186,225,160,226,176,149,154,243,227,217,146,170,241,173,155,171,164,134,183,153,158,169,174,147,145,185,156,137,179
 opcodes:
 
-        db 0,0,0,0,_daa,0,_rst,0,_ind,0,0,0,0,0,0,0
-        db 0,0,0,0,0,_lddr,0,0,0,0,0,0,0,0,0,0
-        db 0,_inir,0,0,0,0,0,0,0,0,0,0,0,_ldi,0,0
-        db _halt,0,0,0,_xor,_otdr,_or,0,_cpl,_and,_sll,_indr,0,_inc,0,_ld
-        db 0,0,0,_rld,_im,0,0,0,0,0,0,0,0,_outi,_ldd,0
-        db 0,0,0,0,0,0,_res,0,0,_cpir,0,0,0,_sbc,_neg,0
-        db 0,0,0,0,0,0,_set,_ini,0,_ldir,_di,0,_djnz,0,_rrd,0
-        db _ei,0,_otir,0,0,0,0,0,0,0,_cpi,_reti,0,0,0,0
-        db 0,_adc,_rrca,0,0,0,0,0,_scf,_cpd,0,0,0,0,0,0
-        db 0,0,_rlc,_call,0,0,0,0,0,_sra,0,0,0,_push,_outd,0
-        db _ret,0,0,0,0,0,0,0,0,0,_srl,_ccf,0,0,_rr,0
-        db 0,_exx,0,0,_jr,_rra,_rlca,_cpdr,0,0,0,_bit,0,_nop,_pop,0
-        db 0,0,0,0,_dec,0,0,0,0,0,0,0,0,_jp,0,_add
-        db 0,0,0,_out,0,0,0,0,0,0,_sub,0,_rl,0,0,0
-        db 0,0,0,0,0,0,0,0,_rrc,0,0,0,0,0,0,0
-        db _rla,_in,0,0,_ex,_cp,_retn,0,0,0,0,0,0,0,0,_sla
+    db set_,add_,0,srl_,0,0,0,ccf_,0,0,0,0,0,0,0,sll_,rra_,0,0,0,0,0,adc_,0,0,0,0,0,0,im_,0,0
+    db 0,0,0,0,0,retn_,0,0,0,0,0,0,0,0,0,0,sbc_,0,0,cpd_,0,rrc_,0,0,indr_,0,0,pop_,ld_,0,cpdr_,0
+    db 0,0,rst_,0,scf_,sla_,0,djnz_,0,ex_,call_,0,exx_,sub_,or_,0,0,0,0,cpl_,0,0,0,0,0,0,0,res_,0,rl_,otdr_,0
+    db outd_,rrd_,0,reti_,0,0,0,bit_,0,0,0,ei_,0,0,ind_,0,ini_,0,cpi_,inir_,outi_,0,0,0,0,0,xor_,0,0,0,0,cp_
+    db 0,0,0,rlca_,sra_,rrca_,0,0,0,0,0,0,0,0,0,0,ldd_,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+    db otir_,0,daa_,0,halt_,0,0,inc_,ldi_,0,0,0,rla_,push_,0,0,and_,0,0,0,0,0,0,0,0,0,0,dec_,0,0,0,jp_
+    db 0,0,0,neg_,0,0,0,0,jr_,di_,0,0,0,nop_,cpir_,0,0,0,0,ret_,0,0,0,0,0,0,0,0,0,rld_,0,in_
+    db 0,0,0,0,0,0,0,lddr_,0,0,0,0,ldir_,0,0,rr_,0,0,0,0,0,rlc_,0,0,0,0,out_,0,0,0,0,0
 
     .align $100
+
+rla_:
+outi_:
+indr_:
+ind_:
+rl_:
+cp_:
+ex_:
+in_:
+ei_:
+inc_:
+ldir_:
+dec_:
+add_:
+sla_:
+exx_:
+rrc_:
+or_:
+im_:
+otdr_:
+di_:
+jr_:
+sra_:
+neg_:
+ccf_:
+and_:
+res_:
+cpdr_:
+scf_:
+rst_:
+pop_:
+reti_:
+ldd_:
+outd_:
+rrd_:
+adc_:
+retn_:
+rlc_:
+sub_:
+cpi_:
+call_:
+out_:
+xor_:
+ld_:
+rld_:
+djnz_:
+cpir_:
+set_:
+push_:
+ini_:
+rra_:
+bit_:
+lddr_:
+sll_:
+daa_:
+otir_:
+cpd_:
+rrca_:
+inir_:
+cpl_:
+rr_:
+jp_:
+halt_:
+sbc_:
+nop_:
+rlca_:
+ret_:
+srl_:
+ldi_:
+
+
+
     
 colon_:
 hash_:    
@@ -889,7 +850,6 @@ cursorShow1:
     call ansiCursorShow
     jp (ix)
 
-dec_:
 decBase:
     ld a,10
 decBase1:
@@ -935,7 +895,6 @@ hex_:
 ; Z80 port input
 ; /in
 ; port -- value 
-in_:
 input:
     pop hl
     ld e,c                      ; save IP
@@ -982,7 +941,6 @@ nil_:
 
 ; /o Z80 port output               
 ; value port --
-out_:
 output:
     pop hl
     ld e,c                      ; save IP
@@ -1129,7 +1087,7 @@ void:
     jp (ix)
     
 ; /xor
-xor_:
+xxor_:
     pop de                      ; Bitwise xor the top 2 elements of the stack
 xor1:
     pop hl
@@ -2460,15 +2418,25 @@ NEXT:
     cp " "                      ; whitespace?
     jr z,next                   ; space? ignore
     jr c,next1
-    add a,$80 - "!"             ; subtract "!", add $80 (opcodes lsb starts at $80)
+
+    ld de,bc                    ; de = token start
+    inc de
+next0:
+    inc bc                      ; bc = first char
+    ld a,(bc)
+    cp " "+1
+    jr c,next0
+    ld hl,bc
+    or a
+    sbc hl,de
+    ex de,hl                    ; hl = tok, de = len
+    push bc
+    ld b,e
+    call hash
+    pop bc
     ld l,a                      ; index into table
     ld h,msb(opcodes)           ; start address of jump table    
     ld l,(hl)                   ; get low jump address
-    inc h                       ; page 2
-    cp "Z" - "!" + 1 + $80
-    jr c,next0
-    inc h                       ; page 3
-next0:
     jp (hl)                     ; Jump to routine
 next1:
     cp NUL                      ; end of input string?
@@ -2517,3 +2485,23 @@ reEdit1:
     sbc hl,de
     ld bc,hl
     jp interpret2
+
+; hash
+; hl = str
+; de = len
+; returns a = hash
+hash:
+    xor a                   ; hash = zero
+    cp b                    ; does b == zero ?
+    ret z                   ; yes execute with hash = 0
+    ld d,msb(pearson)       ; page aligned pearson table
+hash1:
+    ld c,(hl)               ; c = str[hl++]
+    inc hl
+    xor c                   ; hash = pearson[hash ^ c]
+    ld e,a                   
+    ld a,(de)               
+    djnz hash1              ; loop
+    ret
+
+    
